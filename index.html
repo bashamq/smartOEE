@@ -31,74 +31,91 @@
         nav ul li a:hover { color: var(--secondary); }
 
         /* ==========================================
-           NEW ATTRACIVE HERO SECTION (GLASSMORPHISM)
+           ULTRA-PREMIUM HERO SECTION (LIVE WALLPAPER)
            ========================================== */
         .hero { 
             position: relative;
-            height: 85vh; 
+            min-height: 90vh; 
             display: flex; 
             flex-direction: column; 
-            justify-content: center; 
+            justify-content: flex-start; /* Aligns content to top */
             align-items: center; 
             text-align: center; 
-            padding: 0 20px;
-            background-color: #eef2f3;
+            padding: 40px 20px 0 20px;
             overflow: hidden;
         }
 
-        /* Tech/Engineering Grid Background */
-        .hero::before {
-            content: '';
+        /* LEFT SIDE - FOUNDRY LIVE WALLPAPER */
+        .hero-bg-left {
             position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background-image: 
-                linear-gradient(rgba(189, 195, 199, 0.4) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(189, 195, 199, 0.4) 1px, transparent 1px);
-            background-size: 30px 30px;
+            top: 0; left: 0; width: 50%; height: 100%;
+            background: url('https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=1200&q=80') center/cover;
+            animation: livePanLeft 25s infinite alternate linear;
             z-index: 0;
         }
 
-        /* Perfectly Transparent Watermark */
-        .hero-watermark {
+        /* RIGHT SIDE - HMC/MACHINING LIVE WALLPAPER */
+        .hero-bg-right {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 80%;
-            max-width: 800px;
-            opacity: 0.08; /* Very subtle and elegant */
-            z-index: 1;
-            pointer-events: none;
+            top: 0; right: 0; width: 50%; height: 100%;
+            background: url('https://images.unsplash.com/photo-1611117775350-ac3950990985?auto=format&fit=crop&w=1200&q=80') center/cover;
+            animation: livePanRight 25s infinite alternate linear;
+            z-index: 0;
         }
 
-        /* Glassmorphism Floating Card */
+        /* Cinematic Animations */
+        @keyframes livePanLeft { 0% { transform: scale(1) translate(0, 0); } 100% { transform: scale(1.15) translate(-2%, 2%); } }
+        @keyframes livePanRight { 0% { transform: scale(1.15) translate(2%, -2%); } 100% { transform: scale(1) translate(0, 0); } }
+
+        /* Dark Overlay to make text and logo stand out */
+        .hero-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(rgba(26, 37, 47, 0.7), rgba(26, 37, 47, 0.85));
+            z-index: 1;
+            box-shadow: inset 0 0 100px rgba(0,0,0,0.5);
+        }
+
+        /* BIG LOGO BELOW NAVBAR */
+        .top-large-logo {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 450px; /* Bohat bada aur prominent size */
+            margin-bottom: 40px;
+            margin-top: 20px;
+            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.5)); /* Adds 3D pop effect */
+            animation: fadeInDown 1s ease-out;
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Ultra-Glassmorphism Content Card */
         .hero-content {
             position: relative;
-            z-index: 2; /* Keeps text above the watermark */
-            background: rgba(255, 255, 255, 0.65); /* Sheeshay jaisa transparent background */
-            backdrop-filter: blur(12px); /* Peeche ki cheezon ko blur karega */
-            -webkit-backdrop-filter: blur(12px);
-            padding: 50px 60px;
+            z-index: 2;
+            background: rgba(255, 255, 255, 0.1); /* Highly transparent glass */
+            backdrop-filter: blur(15px); /* Strong blur for depth */
+            -webkit-backdrop-filter: blur(15px);
+            padding: 40px 60px;
             border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
-            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             max-width: 850px;
-            animation: slideUp 0.8s ease-out;
+            color: white; /* Text changed to white */
+            animation: slideUp 1s ease-out 0.3s both; /* Delayed animation */
         }
 
         @keyframes slideUp {
-            from { transform: translateY(30px); opacity: 0; }
+            from { transform: translateY(40px); opacity: 0; }
             to { transform: translateY(0); opacity: 1; }
         }
 
-        .main-logo {
-            max-width: 250px;
-            margin-bottom: 15px;
-            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.05));
-        }
-
-        .hero h1 { font-size: 42px; font-weight: 800; margin-top: 0; margin-bottom: 15px; letter-spacing: 1px; color: var(--primary); }
-        .hero p { font-size: 18px; font-weight: 600; color: #34495e; margin-bottom: 30px; }
+        .hero h1 { font-size: 42px; font-weight: 800; margin-top: 0; margin-bottom: 15px; letter-spacing: 1px; color: #ffffff; text-shadow: 0 2px 5px rgba(0,0,0,0.5); }
+        .hero p { font-size: 18px; font-weight: 400; color: #ecf0f1; margin-bottom: 30px; text-shadow: 0 1px 3px rgba(0,0,0,0.5); }
         
         .hero .btn { 
             background: var(--secondary); color: white; padding: 15px 35px; font-size: 18px; font-weight: bold; 
@@ -106,6 +123,7 @@
             box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4); display: inline-block; 
         }
         .hero .btn:hover { background: #c0392b; transform: translateY(-3px); box-shadow: 0 6px 20px rgba(231, 76, 60, 0.6); }
+
 
         /* Section Setup */
         section { padding: 80px 10%; }
@@ -184,7 +202,10 @@
         .badge-b { position: absolute; top: -10px; left: 50%; transform: translateX(-50%); background: #f1c40f; color: #2c3e50; border-radius: 50%; width: 20px; height: 20px; font-size: 12px; font-weight: bold; display: flex; align-items: center; justify-content: center; }
         
         @media(max-width: 768px) {
+            .hero-bg-left, .hero-bg-right { width: 100%; height: 50%; }
+            .hero-bg-right { top: 50%; }
             .hero h1 { font-size: 32px; }
+            .top-large-logo { max-width: 250px; }
             .hero-content { padding: 30px 20px; }
             .step-row { flex-direction: column; text-align: center; }
             .step-number { width: 100%; margin-bottom: 15px; }
@@ -207,16 +228,21 @@
         </ul>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- ULTRA PREMIUM HERO SECTION -->
     <header class="hero">
-        <!-- The Watermark in the background -->
-        <img src="1787641899345.png" class="hero-watermark" alt="Chenab Watermark">
         
+        <!-- Animated Live Split Backgrounds -->
+        <div class="hero-bg-left"></div>
+        <div class="hero-bg-right"></div>
+        
+        <!-- Dark Gradient Overlay -->
+        <div class="hero-overlay"></div>
+
+        <!-- Big Logo Below Navbar -->
+        <img src="1787641899345.png" class="top-large-logo" alt="Chenab Engineering Works">
+
         <!-- The Glassmorphism Content Card -->
         <div class="hero-content">
-            <!-- Main visible logo -->
-            <img src="1787641899345.png" class="main-logo" alt="Chenab Engineering">
-            
             <h1>Manufacturing Excellence System</h1>
             <p>A complete digital transformation framework for real-time OEE, MTTR/MTBF, Smart Tracking, and Process Flow Automation.</p>
             <a href="#objective" class="btn">Explore The Framework</a>
