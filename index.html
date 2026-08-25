@@ -11,8 +11,8 @@
     <style>
         :root {
             --primary: #2c3e50;
-            --secondary: #e74c3c; /* Matched with Chenab Red */
-            --accent: #f1c40f; /* Matched with Chenab Yellow */
+            --secondary: #e74c3c; /* Chenab Red */
+            --accent: #f1c40f; /* Chenab Yellow */
             --success: #27ae60;
             --warning: #f39c12;
             --purple: #8e44ad;
@@ -30,16 +30,82 @@
         nav ul li a { color: white; text-decoration: none; font-weight: 600; transition: 0.3s; font-size: 14px; text-transform: uppercase; }
         nav ul li a:hover { color: var(--secondary); }
 
-        /* Hero Section (Updated with User Background) */
+        /* ==========================================
+           NEW ATTRACIVE HERO SECTION (GLASSMORPHISM)
+           ========================================== */
         .hero { 
-            background: linear-gradient(rgba(244, 247, 246, 0.88), rgba(244, 247, 246, 0.88)), url('1787641899345.png') center/contain no-repeat; 
-            background-color: white;
-            height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: var(--primary); padding: 0 20px;
+            position: relative;
+            height: 85vh; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            text-align: center; 
+            padding: 0 20px;
+            background-color: #eef2f3;
+            overflow: hidden;
         }
-        .hero h1 { font-size: 50px; font-weight: 800; margin-bottom: 15px; letter-spacing: 1px; color: var(--primary); }
-        .hero p { font-size: 20px; font-weight: 600; max-width: 800px; margin-bottom: 30px; color: #34495e; }
-        .hero .btn { background: var(--secondary); color: white; padding: 15px 35px; font-size: 18px; font-weight: bold; border-radius: 30px; text-decoration: none; transition: 0.3s; box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4); }
-        .hero .btn:hover { background: #c0392b; transform: translateY(-3px); }
+
+        /* Tech/Engineering Grid Background */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: 
+                linear-gradient(rgba(189, 195, 199, 0.4) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(189, 195, 199, 0.4) 1px, transparent 1px);
+            background-size: 30px 30px;
+            z-index: 0;
+        }
+
+        /* Perfectly Transparent Watermark */
+        .hero-watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            max-width: 800px;
+            opacity: 0.08; /* Very subtle and elegant */
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* Glassmorphism Floating Card */
+        .hero-content {
+            position: relative;
+            z-index: 2; /* Keeps text above the watermark */
+            background: rgba(255, 255, 255, 0.65); /* Sheeshay jaisa transparent background */
+            backdrop-filter: blur(12px); /* Peeche ki cheezon ko blur karega */
+            -webkit-backdrop-filter: blur(12px);
+            padding: 50px 60px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            max-width: 850px;
+            animation: slideUp 0.8s ease-out;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .main-logo {
+            max-width: 250px;
+            margin-bottom: 15px;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.05));
+        }
+
+        .hero h1 { font-size: 42px; font-weight: 800; margin-top: 0; margin-bottom: 15px; letter-spacing: 1px; color: var(--primary); }
+        .hero p { font-size: 18px; font-weight: 600; color: #34495e; margin-bottom: 30px; }
+        
+        .hero .btn { 
+            background: var(--secondary); color: white; padding: 15px 35px; font-size: 18px; font-weight: bold; 
+            border-radius: 30px; text-decoration: none; transition: 0.3s; 
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4); display: inline-block; 
+        }
+        .hero .btn:hover { background: #c0392b; transform: translateY(-3px); box-shadow: 0 6px 20px rgba(231, 76, 60, 0.6); }
 
         /* Section Setup */
         section { padding: 80px 10%; }
@@ -47,7 +113,7 @@
         .section-title::after { content: ''; width: 80px; height: 4px; background: var(--secondary); position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); border-radius: 2px; }
 
         /* Objective */
-        .objective { background: white; text-align: center; box-shadow: 0 5px 20px rgba(0,0,0,0.05); border-radius: 15px; padding: 40px; margin-top: -60px; position: relative; z-index: 10; max-width: 900px; margin-left: auto; margin-right: auto; }
+        .objective { background: white; text-align: center; box-shadow: 0 5px 20px rgba(0,0,0,0.05); border-radius: 15px; padding: 40px; margin-top: -40px; position: relative; z-index: 10; max-width: 900px; margin-left: auto; margin-right: auto; }
         .objective i { font-size: 50px; color: var(--secondary); margin-bottom: 20px; }
         .objective h2 { font-size: 28px; color: var(--primary); margin-top: 0; }
 
@@ -118,7 +184,8 @@
         .badge-b { position: absolute; top: -10px; left: 50%; transform: translateX(-50%); background: #f1c40f; color: #2c3e50; border-radius: 50%; width: 20px; height: 20px; font-size: 12px; font-weight: bold; display: flex; align-items: center; justify-content: center; }
         
         @media(max-width: 768px) {
-            .hero h1 { font-size: 35px; }
+            .hero h1 { font-size: 32px; }
+            .hero-content { padding: 30px 20px; }
             .step-row { flex-direction: column; text-align: center; }
             .step-number { width: 100%; margin-bottom: 15px; }
             .step-content { padding-left: 0; }
@@ -142,9 +209,18 @@
 
     <!-- Hero Section -->
     <header class="hero">
-        <h1>Manufacturing Excellence System</h1>
-        <p>A complete digital transformation framework for real-time OEE, MTTR/MTBF, Smart Tracking, and Process Flow Automation.</p>
-        <a href="#objective" class="btn">Explore The Framework</a>
+        <!-- The Watermark in the background -->
+        <img src="1787641899345.png" class="hero-watermark" alt="Chenab Watermark">
+        
+        <!-- The Glassmorphism Content Card -->
+        <div class="hero-content">
+            <!-- Main visible logo -->
+            <img src="1787641899345.png" class="main-logo" alt="Chenab Engineering">
+            
+            <h1>Manufacturing Excellence System</h1>
+            <p>A complete digital transformation framework for real-time OEE, MTTR/MTBF, Smart Tracking, and Process Flow Automation.</p>
+            <a href="#objective" class="btn">Explore The Framework</a>
+        </div>
     </header>
 
     <!-- Objective -->
