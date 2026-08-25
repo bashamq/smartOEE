@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart MES & OEE Framework</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --success: #27ae60;
+            --warning: #f39c12;
+            --light: #f8f9fa;
+            --dark: #1a252f;
+        }
+
+        body { font-family: 'Poppins', sans-serif; margin: 0; padding: 0; background-color: #f4f7f6; color: #333; line-height: 1.6; scroll-behavior: smooth; }
+        
+        /* Navbar */
+        nav { background: var(--dark); padding: 15px 50px; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.1); display: flex; justify-content: space-between; align-items: center; }
+        nav .logo { color: white; font-size: 24px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; }
+        nav .logo span { color: var(--secondary); }
+        nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 20px; }
+        nav ul li a { color: white; text-decoration: none; font-weight: 600; transition: 0.3s; font-size: 14px; text-transform: uppercase; }
+        nav ul li a:hover { color: var(--secondary); }
+
+        /* Hero Section */
+        .hero { 
+            background: linear-gradient(rgba(26, 37, 47, 0.85), rgba(26, 37, 47, 0.85)), url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1920&q=80') center/cover; 
+            height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: white; padding: 0 20px;
+        }
+        .hero h1 { font-size: 50px; font-weight: 800; margin-bottom: 15px; letter-spacing: 1px; }
+        .hero p { font-size: 20px; font-weight: 300; max-width: 800px; margin-bottom: 30px; }
+        .hero .btn { background: var(--accent); color: white; padding: 15px 35px; font-size: 18px; font-weight: bold; border-radius: 30px; text-decoration: none; transition: 0.3s; box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4); }
+        .hero .btn:hover { background: #c0392b; transform: translateY(-3px); }
+
+        /* Section Setup */
+        section { padding: 80px 10%; }
+        .section-title { text-align: center; font-size: 36px; font-weight: 800; color: var(--primary); margin-bottom: 50px; position: relative; }
+        .section-title::after { content: ''; width: 80px; height: 4px; background: var(--secondary); position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); border-radius: 2px; }
+
+        /* Objective */
+        .objective { background: white; text-align: center; box-shadow: 0 5px 20px rgba(0,0,0,0.05); border-radius: 15px; padding: 40px; margin-top: -60px; position: relative; z-index: 10; max-width: 900px; margin-left: auto; margin-right: auto; }
+        .objective i { font-size: 50px; color: var(--success); margin-bottom: 20px; }
+        .objective h2 { font-size: 28px; color: var(--primary); margin-top: 0; }
+
+        /* Architecture */
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .card { background: white; padding: 40px 30px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.08); text-align: center; transition: 0.4s; border-bottom: 5px solid transparent; }
+        .card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.12); }
+        .card i { font-size: 60px; margin-bottom: 20px; }
+        .card.frontend { border-bottom-color: var(--secondary); } .card.frontend i { color: var(--secondary); }
+        .card.backend { border-bottom-color: var(--warning); } .card.backend i { color: var(--warning); }
+        .card.database { border-bottom-color: var(--success); } .card.database i { color: var(--success); }
+        .card h3 { color: var(--primary); font-size: 22px; margin-bottom: 15px; }
+
+        /* Working Mechanism (Timeline style) */
+        .workflow { background: var(--primary); color: white; }
+        .workflow .section-title { color: white; }
+        .workflow .section-title::after { background: var(--accent); }
+        .step-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 40px; background: rgba(255,255,255,0.05); border-radius: 15px; padding: 30px; border-left: 5px solid var(--secondary); }
+        .step-number { font-size: 60px; font-weight: 800; color: rgba(255,255,255,0.1); width: 100px; text-align: center; }
+        .step-content { flex: 1; padding-left: 20px; }
+        .step-content h3 { color: var(--secondary); font-size: 24px; margin-top: 0; }
+        .step-content p { color: #bdc3c7; font-size: 16px; margin-bottom: 10px; }
+        .step-content ul { padding-left: 20px; color: #ecf0f1; }
+        .step-content ul li { margin-bottom: 5px; }
+
+        /* Dashboard Features */
+        .features .card { text-align: left; padding: 30px; border: 1px solid #eee; border-bottom: 5px solid var(--accent); }
+        .features .card i { font-size: 40px; color: var(--accent); margin-bottom: 15px; }
+        .feature-list { list-style-type: none; padding: 0; margin-top: 15px; }
+        .feature-list li { margin-bottom: 10px; position: relative; padding-left: 25px; font-size: 15px; color: #555;}
+        .feature-list li::before { content: '\f058'; font-family: 'FontAwesome'; position: absolute; left: 0; color: var(--success); }
+
+        /* Value Proposition */
+        .benefits { background: #e8f8f5; }
+        .benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; }
+        .benefit-box { display: flex; align-items: flex-start; gap: 15px; background: white; padding: 25px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        .benefit-box i { font-size: 30px; color: var(--success); background: #d5f5e3; padding: 15px; border-radius: 50%; }
+        .benefit-box h4 { margin: 0 0 5px 0; color: var(--primary); font-size: 18px; }
+        .benefit-box p { margin: 0; font-size: 14px; color: #7f8c8d; }
+
+        /* Footer */
+        footer { background: var(--dark); color: white; text-align: center; padding: 25px; font-size: 14px; }
+        
+        @media(max-width: 768px) {
+            .hero h1 { font-size: 35px; }
+            .step-row { flex-direction: column; text-align: center; }
+            .step-number { width: 100%; margin-bottom: 15px; }
+            .step-content { padding-left: 0; }
+            nav ul { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">Smart<span>MES</span></div>
+        <ul>
+            <li><a href="#objective">Objective</a></li>
+            <li><a href="#architecture">Architecture</a></li>
+            <li><a href="#workflow">How It Works</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#benefits">Benefits</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <h1>Manufacturing Excellence System</h1>
+        <p>A complete digital transformation framework for real-time OEE, Process Flow Automation, and Shop Floor Intelligence.</p>
+        <a href="#objective" class="btn">Explore The Framework</a>
+    </header>
+
+    <!-- Objective -->
+    <div class="objective" id="objective">
+        <i class="fa-solid fa-bullseye"></i>
+        <h2>Core Objective</h2>
+        <p>To eliminate manual paper-based reporting and implement a <strong>Real-Time, Cloud-Based MES System</strong>. This framework dynamically tracks Overall Equipment Effectiveness (OEE), visualizes production bottlenecks, monitors Work-In-Progress (WIP), and empowers management with data-driven decision-making tools.</p>
+    </div>
+
+    <!-- Architecture -->
+    <section id="architecture">
+        <h2 class="section-title">System Architecture</h2>
+        <div class="grid-3">
+            <div class="card frontend">
+                <i class="fa-solid fa-laptop-code"></i>
+                <h3>Frontend Interface</h3>
+                <p>Responsive Web Applications built with HTML, CSS, and JS (Chart.js). Accessible on Mobile, Tablets, and Desktop screens across the shop floor.</p>
+            </div>
+            <div class="card backend">
+                <i class="fa-solid fa-server"></i>
+                <h3>Backend Engine</h3>
+                <p>Powered by Google Apps Script APIs. Acts as a secure, fast, and scalable logic processor handling duplicate-prevention and complex OEE calculations.</p>
+            </div>
+            <div class="card database">
+                <i class="fa-solid fa-database"></i>
+                <h3>Cloud Database</h3>
+                <p>Google Sheets functioning as a live cloud database. Stores Master Data (Machine Params, Target CTs) and generates live automated shift logs.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Workflow -->
+    <section class="workflow" id="workflow">
+        <h2 class="section-title">Step-By-Step Mechanism</h2>
+        
+        <div class="step-row">
+            <div class="step-number">01</div>
+            <div class="step-content">
+                <h3>Asset Registration & Master Data Setup</h3>
+                <p>The foundation of the system. Admins configure the digital twin of the factory floor.</p>
+                <ul>
+                    <li>Register machines with unique Asset/Barcode Numbers.</li>
+                    <li>Define Operational Sequence (Op 1, Op 2) for Process Flow mapping.</li>
+                    <li>Set <strong>Ideal Cycle Time (CT)</strong> for automated target generation and bottleneck identification.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="step-row">
+            <div class="step-number">02</div>
+            <div class="step-content">
+                <h3>Real-Time Data Acquisition</h3>
+                <p>Operators input shift data through a 4-step smart UI on the shop floor.</p>
+                <ul>
+                    <li><strong>Setup:</strong> Select Shift, Date, Line, and Machine.</li>
+                    <li><strong>Availability:</strong> Log exact Setup/Maintenance downtime and specific Fault Categories.</li>
+                    <li><strong>Performance:</strong> Enter 'Actual Produced'. System auto-calculates target based on 'Run Time' and 'Ideal CT'.</li>
+                    <li><strong>Quality:</strong> Input 'Good Parts'. System auto-derives 'Scrap' and captures Defect Reasons.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="step-row">
+            <div class="step-number">03</div>
+            <div class="step-content">
+                <h3>Core Calculation Engine</h3>
+                <p>Backend algorithms instantly compute global manufacturing standards.</p>
+                <ul>
+                    <li><strong>Availability:</strong> Run Time ÷ Planned Time.</li>
+                    <li><strong>Performance:</strong> (Ideal CT × Total Parts) ÷ Run Time.</li>
+                    <li><strong>Quality:</strong> Good Parts ÷ Total Parts Produced.</li>
+                    <li><strong>OEE:</strong> Availability × Performance × Quality.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section id="features" class="features">
+        <h2 class="section-title">Live Dashboard Highlights</h2>
+        <div class="grid-3">
+            <div class="card">
+                <i class="fa-solid fa-chart-pie"></i>
+                <h3>Global Line View</h3>
+                <p>The ultimate Bird's-Eye View for Directors and Plant Managers.</p>
+                <ul class="feature-list">
+                    <li>Factory Aggregate & Line-Specific Filtering.</li>
+                    <li>Live OEE, Availability, Performance, and Quality gauges.</li>
+                    <li>Live MTTR (Mean Time To Repair) tracking.</li>
+                    <li>Live MTBF (Mean Time Between Failures) tracking.</li>
+                </ul>
+            </div>
+            <div class="card">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                <h3>Smart Analyzer</h3>
+                <p>Eliminates the need for manual data mining by auto-flagging critical issues.</p>
+                <ul class="feature-list">
+                    <li><strong>Highest Downtime:</strong> Identifies worst machine & lists root causes.</li>
+                    <li><strong>Lowest Performance:</strong> Highlights the slowest machine with loss factors.</li>
+                    <li><strong>Highest Rejections:</strong> Pinpoints scrap generators and defect reasons.</li>
+                </ul>
+            </div>
+            <div class="card">
+                <i class="fa-solid fa-diagram-project"></i>
+                <h3>Process Flow Control</h3>
+                <p>A visual representation of the production line with automated diagnostics.</p>
+                <ul class="feature-list">
+                    <li><strong>WIP/Buffer Monitoring:</strong> Calculates 'IN' & 'OUT' parts between nodes.</li>
+                    <li><strong>Bottleneck ID:</strong> Auto-flags the machine with highest CT (Yellow 'B' Badge).</li>
+                    <li><strong>Smart Alerts:</strong> Blinking Red/Orange alerts for >30m downtime or <75% performance.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Value Proposition -->
+    <section id="benefits" class="benefits">
+        <h2 class="section-title">Value Proposition</h2>
+        <div class="benefits-grid">
+            <div class="benefit-box">
+                <i class="fa-solid fa-leaf"></i>
+                <div>
+                    <h4>100% Paperless</h4>
+                    <p>Eliminates manual registers, minimizing human error and stationary costs.</p>
+                </div>
+            </div>
+            <div class="benefit-box">
+                <i class="fa-solid fa-eye"></i>
+                <div>
+                    <h4>Instant Visibility</h4>
+                    <p>Real-time factory status accessible anywhere on mobile or desktop screens.</p>
+                </div>
+            </div>
+            <div class="benefit-box">
+                <i class="fa-solid fa-boxes-stacked"></i>
+                <div>
+                    <h4>WIP Control</h4>
+                    <p>Live Buffer tracking prevents over-production and balances the assembly line.</p>
+                </div>
+            </div>
+            <div class="benefit-box">
+                <i class="fa-solid fa-lightbulb"></i>
+                <div>
+                    <h4>Data-Driven Decisions</h4>
+                    <p>Smart tracking directs the maintenance team to actual root causes instantly.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Smart Manufacturing Excellence System | Process Flow & OEE Automation Architecture</p>
+    </footer>
+
+</body>
+</html>
