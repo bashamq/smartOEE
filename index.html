@@ -22,12 +22,33 @@
 
         body { font-family: 'Poppins', sans-serif; margin: 0; padding: 0; background-color: #f4f7f6; color: #333; line-height: 1.6; scroll-behavior: smooth; }
         
-        /* Navbar */
-        nav { background: var(--dark); padding: 15px 50px; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.1); display: flex; justify-content: space-between; align-items: center; }
-        nav .logo { color: white; font-size: 24px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; }
-        nav .logo span { color: var(--secondary); }
-        nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 20px; }
-        nav ul li a { color: white; text-decoration: none; font-weight: 600; transition: 0.3s; font-size: 14px; text-transform: uppercase; }
+        /* ==========================================
+           UPDATED BIG NAVBAR WITH LOGO
+           ========================================== */
+        nav { 
+            background: var(--dark); 
+            padding: 20px 50px; /* Badi Navbar */
+            position: sticky; top: 0; z-index: 1000; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3); 
+            display: flex; justify-content: space-between; align-items: center; 
+        }
+        
+        .nav-brand { display: flex; align-items: center; gap: 20px; }
+        .nav-brand img { 
+            height: 75px; /* Bada Logo */
+            background: white; /* Black text ko numaya karne ke liye */
+            padding: 5px 15px; 
+            border-radius: 8px; 
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2); 
+        }
+        .nav-brand .title { 
+            color: white; font-size: 26px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; 
+            border-left: 2px solid #7f8c8d; padding-left: 20px;
+        }
+        .nav-brand .title span { color: var(--secondary); }
+
+        nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 25px; align-items: center; }
+        nav ul li a { color: white; text-decoration: none; font-weight: 600; transition: 0.3s; font-size: 15px; text-transform: uppercase; }
         nav ul li a:hover { color: var(--secondary); }
 
         /* ==========================================
@@ -35,13 +56,13 @@
            ========================================== */
         .hero { 
             position: relative;
-            min-height: 90vh; 
+            min-height: 88vh; 
             display: flex; 
             flex-direction: column; 
-            justify-content: flex-start; /* Aligns content to top */
+            justify-content: center; 
             align-items: center; 
             text-align: center; 
-            padding: 40px 20px 0 20px;
+            padding: 0 20px;
             overflow: hidden;
         }
 
@@ -71,42 +92,25 @@
         .hero-overlay {
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: linear-gradient(rgba(26, 37, 47, 0.7), rgba(26, 37, 47, 0.85));
+            background: linear-gradient(rgba(26, 37, 47, 0.65), rgba(26, 37, 47, 0.85));
             z-index: 1;
             box-shadow: inset 0 0 100px rgba(0,0,0,0.5);
-        }
-
-        /* BIG LOGO BELOW NAVBAR */
-        .top-large-logo {
-            position: relative;
-            z-index: 2;
-            width: 100%;
-            max-width: 450px; /* Bohat bada aur prominent size */
-            margin-bottom: 40px;
-            margin-top: 20px;
-            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.5)); /* Adds 3D pop effect */
-            animation: fadeInDown 1s ease-out;
-        }
-
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
         }
 
         /* Ultra-Glassmorphism Content Card */
         .hero-content {
             position: relative;
             z-index: 2;
-            background: rgba(255, 255, 255, 0.1); /* Highly transparent glass */
-            backdrop-filter: blur(15px); /* Strong blur for depth */
+            background: rgba(255, 255, 255, 0.1); 
+            backdrop-filter: blur(15px); 
             -webkit-backdrop-filter: blur(15px);
-            padding: 40px 60px;
+            padding: 50px 60px;
             border-radius: 20px;
             box-shadow: 0 15px 35px rgba(0,0,0,0.3);
             border: 1px solid rgba(255, 255, 255, 0.2);
-            max-width: 850px;
-            color: white; /* Text changed to white */
-            animation: slideUp 1s ease-out 0.3s both; /* Delayed animation */
+            max-width: 900px;
+            color: white; 
+            animation: slideUp 1s ease-out 0.3s both;
         }
 
         @keyframes slideUp {
@@ -114,16 +118,15 @@
             to { transform: translateY(0); opacity: 1; }
         }
 
-        .hero h1 { font-size: 42px; font-weight: 800; margin-top: 0; margin-bottom: 15px; letter-spacing: 1px; color: #ffffff; text-shadow: 0 2px 5px rgba(0,0,0,0.5); }
-        .hero p { font-size: 18px; font-weight: 400; color: #ecf0f1; margin-bottom: 30px; text-shadow: 0 1px 3px rgba(0,0,0,0.5); }
+        .hero h1 { font-size: 46px; font-weight: 800; margin-top: 0; margin-bottom: 20px; letter-spacing: 1px; color: #ffffff; text-shadow: 0 2px 5px rgba(0,0,0,0.5); }
+        .hero p { font-size: 20px; font-weight: 400; color: #ecf0f1; margin-bottom: 35px; text-shadow: 0 1px 3px rgba(0,0,0,0.5); }
         
         .hero .btn { 
-            background: var(--secondary); color: white; padding: 15px 35px; font-size: 18px; font-weight: bold; 
+            background: var(--secondary); color: white; padding: 15px 40px; font-size: 18px; font-weight: bold; 
             border-radius: 30px; text-decoration: none; transition: 0.3s; 
             box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4); display: inline-block; 
         }
         .hero .btn:hover { background: #c0392b; transform: translateY(-3px); box-shadow: 0 6px 20px rgba(231, 76, 60, 0.6); }
-
 
         /* Section Setup */
         section { padding: 80px 10%; }
@@ -201,11 +204,11 @@
         .badge-out { position: absolute; top: -10px; right: -10px; background: #27ae60; color: white; padding: 3px 8px; border-radius: 5px; font-size: 10px; font-weight: bold; }
         .badge-b { position: absolute; top: -10px; left: 50%; transform: translateX(-50%); background: #f1c40f; color: #2c3e50; border-radius: 50%; width: 20px; height: 20px; font-size: 12px; font-weight: bold; display: flex; align-items: center; justify-content: center; }
         
-        @media(max-width: 768px) {
+        @media(max-width: 900px) {
+            .nav-brand .title { display: none; } /* Hide title on small screens */
             .hero-bg-left, .hero-bg-right { width: 100%; height: 50%; }
             .hero-bg-right { top: 50%; }
             .hero h1 { font-size: 32px; }
-            .top-large-logo { max-width: 250px; }
             .hero-content { padding: 30px 20px; }
             .step-row { flex-direction: column; text-align: center; }
             .step-number { width: 100%; margin-bottom: 15px; }
@@ -219,7 +222,11 @@
 
     <!-- Navigation -->
     <nav>
-        <div class="logo">Chenab<span>MES</span></div>
+        <div class="nav-brand">
+            <!-- Chenab Logo in the selection bar -->
+            <img src="1787641899345.png" alt="Chenab Engineering">
+            <div class="title">Chenab<span>MES</span></div>
+        </div>
         <ul>
             <li><a href="#objective">Objective</a></li>
             <li><a href="#workflow">How It Works</a></li>
@@ -237,9 +244,6 @@
         
         <!-- Dark Gradient Overlay -->
         <div class="hero-overlay"></div>
-
-        <!-- Big Logo Below Navbar -->
-        <img src="1787641899345.png" class="top-large-logo" alt="Chenab Engineering Works">
 
         <!-- The Glassmorphism Content Card -->
         <div class="hero-content">
