@@ -50,18 +50,15 @@
             display: flex; justify-content: space-between; align-items: center; 
         }
         
-        /* Left: Time & Date */
         .nav-left { flex: 1; display: flex; flex-direction: column; color: #ecf0f1; }
         .live-time { font-size: 22px; font-weight: 800; color: var(--accent); letter-spacing: 1px; line-height: 1; }
         .live-date { font-size: 12px; font-weight: 600; color: #bdc3c7; text-transform: uppercase; margin-top: 4px; }
 
-        /* Center: Brand Logo */
         .nav-center { flex: 1; display: flex; justify-content: center; align-items: center; gap: 15px; }
         .nav-center img { height: 60px; background: white; padding: 4px 12px; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
         .nav-center .title { color: white; font-size: 24px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; border-left: 2px solid #7f8c8d; padding-left: 15px; }
         .nav-center .title span { color: var(--secondary); }
 
-        /* Right: Theme Toggle */
         .nav-right { flex: 1; display: flex; justify-content: flex-end; align-items: center; gap: 10px; color: white; font-weight: 600; font-size: 14px;}
         
         .switch { position: relative; display: inline-block; width: 50px; height: 24px; }
@@ -72,7 +69,7 @@
         input:checked + .slider:before { transform: translateX(26px); }
 
         /* ==========================================
-           HERO SECTION (2 SEC ZOOM IN SLIDESHOW)
+           HERO SECTION (BACKGROUND SLIDESHOW)
            ========================================== */
         .hero { 
             position: relative; min-height: 88vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 20px; overflow: hidden;
@@ -84,28 +81,26 @@
             position: absolute; top:0; left:0; width:100%; height:100%;
             background-size: cover; background-position: center;
             opacity: 0;
-            /* 4s total time (2s per slide) */
-            animation: zoomFade 4s infinite linear;
+            /* Total 7 images * 3 seconds per image = 21 seconds total loop */
+            animation: zoomFade 21s infinite;
         }
 
-        /* Slide 1 - Doosan Machine */
-        .slide-1 { 
-            background-image: url('9819bfd013500bdc73b47cbaef1b246c-f561fb9d719e4bf03d861fc1999d3ea5.jpg'); 
-            animation-delay: 0s; 
-        }
-        /* Slide 2 - Okuma Machine */
-        .slide-2 { 
-            background-image: url('okuma_hmc_hmcvsvmc_sectionbanner.jpg'); 
-            animation-delay: 2s; 
-        }
+        /* Slide Delays for 7 Images (3 seconds gap) */
+        .slide-1 { background-image: url('9819bfd013500bdc73b47cbaef1b246c-f561fb9d719e4bf03d861fc1999d3ea5.jpg'); animation-delay: 0s; }
+        .slide-2 { background-image: url('okuma_hmc_hmcvsvmc_sectionbanner.jpg'); animation-delay: 3s; }
+        .slide-3 { background-image: url('foundry-sand-plant-manufacturer-india-img.jpg'); animation-delay: 6s; }
+        .slide-4 { background-image: url('original-6-1.jpg'); animation-delay: 9s; }
+        .slide-5 { background-image: url('quality-room.jpg'); animation-delay: 12s; }
+        .slide-6 { background-image: url('lab m.jpg'); animation-delay: 15s; }
+        .slide-7 { background-image: url('Smart-Factory-Using-IoT.jpg'); animation-delay: 18s; }
 
-        /* 2-Second Zoom & Crossfade Animation */
+        /* Zoom-in and Fade-out Cinematic Effect */
         @keyframes zoomFade {
-            0%   { opacity: 0; transform: scale(1); }
-            15%  { opacity: 1; transform: scale(1.03); } /* Smooth Fade In */
-            50%  { opacity: 1; transform: scale(1.1); }  /* Stays visible & zooming for 2 seconds */
-            65%  { opacity: 0; transform: scale(1.13); } /* Smooth Fade Out */
-            100% { opacity: 0; transform: scale(1.2); }  /* Remains hidden & zooming until next loop */
+            0% { opacity: 0; transform: scale(1); }
+            5% { opacity: 1; transform: scale(1.02); } /* Fades in quickly */
+            14% { opacity: 1; transform: scale(1.08); } /* Holds for ~2 secs while zooming */
+            19% { opacity: 0; transform: scale(1.12); } /* Fades out smoothly */
+            100% { opacity: 0; transform: scale(1.15); }
         }
 
         /* Dark Overlay for Text Readability */
@@ -118,7 +113,7 @@
         /* Glassmorphism Content Card */
         .hero-content {
             position: relative; z-index: 2;
-            background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
             padding: 50px 60px; border-radius: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.5);
             border: 1px solid rgba(255, 255, 255, 0.2); max-width: 900px; color: white; 
             animation: slideUpContent 1s ease-out 0.3s both;
@@ -273,10 +268,15 @@
 
     <!-- ULTRA PREMIUM HERO SECTION (SLIDESHOW) -->
     <header class="hero">
-        <!-- Background Slider (2 Second Zoom-In Fade) -->
+        <!-- Background Slider with 7 Images -->
         <div class="bg-slider">
             <div class="slide slide-1"></div>
             <div class="slide slide-2"></div>
+            <div class="slide slide-3"></div>
+            <div class="slide slide-4"></div>
+            <div class="slide slide-5"></div>
+            <div class="slide slide-6"></div>
+            <div class="slide slide-7"></div>
         </div>
 
         <div class="hero-overlay"></div>
@@ -527,7 +527,7 @@
                                 </div>
                             </div>
                             <div class="mock-btn-nav">
-                                <button class="btn-next" onclick="nextDataStep('view-avail')">Next</button>
+                                <button class="btn-next" onclick="nextDataStep('view-avail')">Next <i class="fa-solid fa-arrow-right"></i></button>
                             </div>
                         </div>
 
@@ -557,7 +557,7 @@
                                 </div>
                             </div>
                             <div class="mock-btn-nav">
-                                <button class="btn-next" onclick="nextDataStep('view-perf')">Next</button>
+                                <button class="btn-next" onclick="nextDataStep('view-perf')">Next <i class="fa-solid fa-arrow-right"></i></button>
                             </div>
                         </div>
 
@@ -587,7 +587,7 @@
                                 </div>
                             </div>
                             <div class="mock-btn-nav">
-                                <button class="btn-next" onclick="nextDataStep('view-qual')">Next</button>
+                                <button class="btn-next" onclick="nextDataStep('view-qual')">Next <i class="fa-solid fa-arrow-right"></i></button>
                             </div>
                         </div>
 
@@ -704,7 +704,7 @@
                         <h4 class="flow-title">[Op 1] Lathe</h4>
                         <p class="flow-down">Down: 10m</p>
                         
-                        <!-- Mini Charts (Static for mockup) -->
+                        <!-- Mini Charts -->
                         <div style="display:flex; justify-content:space-around; margin-top:15px;">
                             <div style="text-align:center;">
                                 <div style="width:30px; height:30px; border-radius:50%; border:4px solid #2c3e50; font-size:10px; font-weight:bold; line-height:30px; color:#2c3e50;">78</div>
