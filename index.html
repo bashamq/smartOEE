@@ -16,6 +16,7 @@
             --accent: #f1c40f; /* Chenab Yellow */
             --success: #27ae60;
             --purple: #8e44ad;
+            --warning: #f39c12;
             
             /* Light Theme Defaults */
             --bg-body: #f4f7f6;
@@ -221,6 +222,191 @@
         .track-card { flex: 1; background: var(--bg-card); padding: 15px; border-radius: 8px; border-top: 4px solid var(--border-color); box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
         .track-d { border-top-color: #e74c3c; } .track-p { border-top-color: #f39c12; } .track-q { border-top-color: #9b59b6; }
 
+
+        /* ==========================================
+           OEE IMPROVEMENT CHECKLIST
+           ========================================== */
+        .oee-checklist-section {
+            background: linear-gradient(135deg, var(--bg-body), var(--bg-card));
+        }
+        .oee-checklist-intro {
+            max-width: 950px;
+            margin: -25px auto 35px;
+            text-align: center;
+            color: var(--text-muted);
+        }
+        .oee-toolbar {
+            max-width: 1100px;
+            margin: 0 auto 25px;
+            display: flex;
+            gap: 12px;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .oee-progress-wrap {
+            flex: 1;
+            min-width: 260px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 12px 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        .oee-progress-top {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 7px;
+        }
+        .oee-progress-bar {
+            height: 10px;
+            background: #e5e7eb;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        .oee-progress-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--secondary), var(--accent));
+            transition: width .35s ease;
+        }
+        .oee-action-btn {
+            border: none;
+            border-radius: 9px;
+            padding: 11px 16px;
+            font-weight: 700;
+            cursor: pointer;
+            background: var(--primary);
+            color: white;
+            transition: .25s;
+        }
+        .oee-action-btn:hover {
+            transform: translateY(-2px);
+            opacity: .92;
+        }
+        .oee-action-btn.reset {
+            background: var(--secondary);
+        }
+        .oee-checklist {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            gap: 20px;
+        }
+        .oee-area {
+            background: var(--bg-card);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 7px 20px rgba(0,0,0,0.08);
+            border: 1px solid var(--border-color);
+        }
+        .oee-area-header {
+            display: grid;
+            grid-template-columns: 70px 1fr auto;
+            gap: 15px;
+            align-items: center;
+            padding: 20px 22px;
+            background: linear-gradient(135deg, #22375b, var(--nav-bg));
+            color: white;
+        }
+        .oee-area-number {
+            font-size: 34px;
+            font-weight: 800;
+            opacity: .35;
+        }
+        .oee-area-header h3 {
+            margin: 0;
+            font-size: 21px;
+            color: white;
+        }
+        .oee-area-header p {
+            margin: 3px 0 0;
+            font-size: 13px;
+            color: #d7dde5;
+        }
+        .oee-area-score {
+            min-width: 65px;
+            text-align: center;
+            font-size: 13px;
+            font-weight: 800;
+            background: rgba(255,255,255,.12);
+            border-radius: 20px;
+            padding: 7px 10px;
+        }
+        .oee-items {
+            padding: 8px 18px 12px;
+        }
+        .oee-item {
+            display: grid;
+            grid-template-columns: 30px 1.1fr 1.7fr 1fr;
+            gap: 14px;
+            align-items: center;
+            padding: 15px 5px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .oee-item:last-child { border-bottom: none; }
+        .oee-item input {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            accent-color: var(--secondary);
+        }
+        .oee-check-title {
+            font-weight: 700;
+            color: var(--text-main);
+            font-size: 14px;
+        }
+        .oee-improve {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+        .oee-impact {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--success);
+            background: rgba(39,174,96,.08);
+            border-radius: 8px;
+            padding: 8px 10px;
+            text-align: center;
+        }
+        .oee-formula-box {
+            max-width: 1100px;
+            margin: 25px auto 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+        .oee-formula-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,.07);
+        }
+        .oee-formula-card h4 {
+            margin: 0 0 8px;
+            color: var(--secondary);
+            font-size: 17px;
+        }
+        .oee-formula-card p {
+            margin: 5px 0;
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+        .oee-formula {
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--primary);
+        }
+        .oee-target {
+            color: var(--secondary) !important;
+            font-weight: 800;
+        }
+
         @media(max-width: 900px) {
             nav { flex-direction: column; padding: 15px; gap: 15px; }
             .nav-left, .nav-center, .nav-right { justify-content: center; text-align: center; width: 100%; }
@@ -233,11 +419,27 @@
             .step-number { width: 100%; margin-bottom: 15px; }
             .step-content { padding-left: 0; }
             
+
+            .oee-area-header { grid-template-columns: 45px 1fr; }
+            .oee-area-score { grid-column: 2; justify-self: start; }
+            .oee-item { grid-template-columns: 30px 1fr; }
+            .oee-improve, .oee-impact { grid-column: 2; text-align: left; }
+            .oee-formula-box { grid-template-columns: 1fr; }
+
             .track-grid { flex-direction: column; }
             .mockup-dash-grid { grid-template-columns: 1fr; }
             .flow-container-mock { flex-direction: column; }
             .flow-arrow-mock { transform: rotate(90deg); margin: 10px 0;}
         }
+    
+        @media print {
+            nav, .hero, .oee-toolbar, footer, .click-hint, .btn { display: none !important; }
+            section { padding: 25px 2%; }
+            .oee-area { break-inside: avoid; box-shadow: none; }
+            .oee-checklist-section { display: block !important; }
+            .oee-item { grid-template-columns: 30px 1.1fr 1.7fr 1fr; }
+        }
+
     </style>
 </head>
 <body>
@@ -285,7 +487,7 @@
         <div class="hero-content">
             <h1>Manufacturing Excellence System</h1>
             <p>A complete digital transformation framework for real-time OEE, MTTR/MTBF, Smart Tracking, and Process Flow Automation.</p>
-            <a href="#objective" class="btn">Explore The Framework</a>
+            <a href="#oee-checklist" class="btn">Open OEE Checklist</a>
         </div>
     </header>
 
@@ -369,6 +571,205 @@
                     <li><strong>Buffer/WIP:</strong> Shows accumulated parts between nodes.</li>
                     <li><strong>Bottleneck Identification:</strong> Auto-flags highest CT machine (Yellow Badge).</li>
                 </ul>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- OEE Improvement Checklist -->
+    <section id="oee-checklist" class="oee-checklist-section">
+        <h2 class="section-title">OEE Improvement Checklist</h2>
+        <p class="oee-checklist-intro">
+            Measure what matters, improve what counts. Use this checklist on the shop floor
+            to review Availability, Performance, Quality and continuous improvement actions.
+        </p>
+
+        <div class="oee-toolbar">
+            <div class="oee-progress-wrap">
+                <div class="oee-progress-top">
+                    <span>Checklist Progress</span>
+                    <span id="oeeProgressText">0 / 17 completed</span>
+                </div>
+                <div class="oee-progress-bar">
+                    <div id="oeeProgressFill" class="oee-progress-fill"></div>
+                </div>
+            </div>
+            <button class="oee-action-btn" onclick="checkAllOEE()">Check All</button>
+            <button class="oee-action-btn reset" onclick="resetOEEChecklist()">Reset</button>
+            <button class="oee-action-btn" onclick="window.print()">Print</button>
+        </div>
+
+        <div class="oee-checklist">
+
+            <!-- 1 Availability -->
+            <div class="oee-area">
+                <div class="oee-area-header">
+                    <div class="oee-area-number">01</div>
+                    <div>
+                        <h3>AVAILABILITY — Make Time Available for Production</h3>
+                        <p>Reduce downtime, setup losses, waiting and unnecessary cycle-time losses.</p>
+                    </div>
+                    <div class="oee-area-score" id="oeeScoreAvailability">0 / 5</div>
+                </div>
+                <div class="oee-items">
+                    <label class="oee-item">
+                        <input type="checkbox" class="oee-check" data-area="availability">
+                        <span class="oee-check-title">Breakdown losses</span>
+                        <span class="oee-improve">Check TPM points daily. Fix abnormalities before breakdown.</span>
+                        <span class="oee-impact">Increase uptime</span>
+                    </label>
+                    <label class="oee-item">
+                        <input type="checkbox" class="oee-check" data-area="availability">
+                        <span class="oee-check-title">Changeover / setup losses</span>
+                        <span class="oee-improve">Use SMED. Prepare in advance and standardize steps.</span>
+                        <span class="oee-impact">More time for production</span>
+                    </label>
+                    <label class="oee-item">
+                        <input type="checkbox" class="oee-check" data-area="availability">
+                        <span class="oee-check-title">Minor stoppages</span>
+                        <span class="oee-improve">Find top minor stops using 5 Why. Take quick countermeasures.</span>
+                        <span class="oee-impact">Improve run time</span>
+                    </label>
+                    <label class="oee-item">
+                        <input type="checkbox" class="oee-check" data-area="availability">
+                        <span class="oee-check-title">Material / Manpower availability</span>
+                        <span class="oee-improve">Check material call time, staging and manpower before shift.</span>
+                        <span class="oee-impact">No wait time</span>
+                    </label>
+                    <label class="oee-item">
+                        <input type="checkbox" class="oee-check" data-area="availability">
+                        <span class="oee-check-title">Cycle time losses</span>
+                        <span class="oee-improve">Compare ideal cycle time with actual. Remove non-value-add steps.</span>
+                        <span class="oee-impact">Lower cycle time</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- 2 Performance -->
+            <div class="oee-area">
+                <div class="oee-area-header">
+                    <div class="oee-area-number">02</div>
+                    <div>
+                        <h3>PERFORMANCE — Run at the Maximum Possible Speed</h3>
+                        <p>Find bottlenecks, balance work and maintain standard operating methods.</p>
+                    </div>
+                    <div class="oee-area-score" id="oeeScorePerformance">0 / 4</div>
+                </div>
+                <div class="oee-items">
+                    <label class="oee-item">
+                        <input type="checkbox" class="oee-check" data-area="performance">
+                        <span class="oee-check-title">Bottleneck operation</span>
+                        <span class="oee-improve">Check station-wise output and find the slowest operation.</span>
+                        <span class="oee-impact">Remove constraints</span>
+                    </label>
+                    <label class="oee-item">
+                        <input type="checkbox" class="oee-check" data-area="performance">
+                        <span class="oee-check-title">Line balancing</span>
+                        <span class="oee-improve">Distribute work evenly, adjust manpower and reduce waiting time.</span>
+                        <span class="oee-impact">Smooth flow</span>
+                    </label>
+                    <label class="oee-item">
+                        <input type="checkbox" class="oee-check" data-area="performance">
+                        <span class="oee-check-title">Standard work</span>
+                        <span class="oee-improve">Create SOP, train team and follow the standard method.</span>
+                        <span class="oee-impact">Consistent result</span>
+                    </label>
+                    <label class="oee-item">
+                        <input type="checkbox" class="oee-check" data-area="performance">
+                        <span class="oee-check-title">Rejection / rework</span>
+                        <span class="oee-improve">Track total output, rework and rejection. Calculate FPY and review daily.</span>
+                        <span class="oee-impact">Higher FPY</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- 3 Quality -->
+            <div class="oee-area">
+                <div class="oee-area-header">
+                    <div class="oee-area-number">03</div>
+                    <div>
+                        <h3>QUALITY — Do It Right the First Time</h3>
+                        <p>Prevent defects at source and solve the real root cause permanently.</p>
+                    </div>
+                    <div class="oee-area-score" id="oeeScoreQuality">0 / 3</div>
+                </div>
+                <div class="oee-items">
+                    <label class="oee-item">
+                        <input type="checkbox" class="oee-check" data-area="quality">
+                        <span class="oee-check-title">Top defects</span>
+                        <span class="oee-improve">Find top defects, apply 5 Why and take corrective action.</span>
+                        <span class="oee-impact">Lower rejection</span>
+                    </label>
+                    <label class="oee-item">
+                        <input type="checkbox" class="oee-check" data-area="quality">
+                        <span class="oee-check-title">Root cause of defects</span>
+                        <span class="oee-improve">Use 5 Why, Fishbone or Pareto to find the true root cause.</span>
+                        <span class="oee-impact">Permanent solution</span>
+                    </label>
+                    <label class="oee-item">
+                        <input type="checkbox" class="oee-check" data-area="quality">
+                        <span class="oee-check-title">Poka-Yoke / Error-Proofing</span>
+                        <span class="oee-improve">Add simple mistake-proofing to prevent defects at source.</span>
+                        <span class="oee-impact">Zero mistake</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- 4 Review -->
+            <div class="oee-area">
+                <div class="oee-area-header">
+                    <div class="oee-area-number">04</div>
+                    <div>
+                        <h3>REVIEW — Track, Analyze and Improve Continuously</h3>
+                        <p>Turn daily OEE results into focused improvement actions and sustained gains.</p>
+                    </div>
+                    <div class="oee-area-score" id="oeeScoreReview">0 / 5</div>
+                </div>
+                <div class="oee-items">
+                    <label class="oee-item">
+                        <input type="checkbox" class="oee-check" data-area="review">
+                        <span class="oee-check-title">Calculate OEE daily</span>
+                        <span class="oee-improve">Record A, P, Q daily and calculate OEE. Display on board.</span>
+                        <span class="oee-impact">Daily visibility</span>
+                    </label>
+                    <label class="oee-item">
+                        <input type="checkbox" class="oee-check" data-area="review">
+                        <span class="oee-check-title">Identify biggest loss</span>
+                        <span class="oee-improve">Use Pareto chart to find the top loss category impacting OEE.</span>
+                        <span class="oee-impact">Focus on priority</span>
+                    </label>
+                    <label class="oee-item">
+                        <input type="checkbox" class="oee-check" data-area="review">
+                        <span class="oee-check-title">Take one improvement action</span>
+                        <span class="oee-improve">Choose one loss, set target, implement action and review.</span>
+                        <span class="oee-impact">Faster improvement</span>
+                    </label>
+                    <label class="oee-item">
+                        <input type="checkbox" class="oee-check" data-area="review">
+                        <span class="oee-check-title">Verify & sustain improvement</span>
+                        <span class="oee-improve">Verify result, update standard and do regular follow-up.</span>
+                        <span class="oee-impact">Sustained gain</span>
+                    </label>
+                    <label class="oee-item">
+                        <input type="checkbox" class="oee-check" data-area="review">
+                        <span class="oee-check-title">Repeat the improvement cycle</span>
+                        <span class="oee-improve">Measure → Analyze → Improve → Repeat, starting with the biggest OEE loss.</span>
+                        <span class="oee-impact">Continuous improvement</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="oee-formula-box">
+            <div class="oee-formula-card">
+                <h4><i class="fa-solid fa-calculator"></i> OEE Calculation</h4>
+                <div class="oee-formula">OEE = Availability × Performance × Quality</div>
+                <p>Example: 90% × 95% × 98% = <strong>83.8% OEE</strong></p>
+            </div>
+            <div class="oee-formula-card">
+                <h4><i class="fa-solid fa-bullseye"></i> Target Approach</h4>
+                <div class="oee-formula">Start with the biggest OEE loss.</div>
+                <p class="oee-target">Measure → Analyze → Improve → Repeat</p>
             </div>
         </div>
     </section>
@@ -779,6 +1180,62 @@
             alert("Data submitted to Cloud Database!");
         }
 
+
+        // OEE Improvement Checklist Logic
+        const oeeAreas = {
+            availability: { total: 5, scoreId: 'oeeScoreAvailability' },
+            performance: { total: 4, scoreId: 'oeeScorePerformance' },
+            quality: { total: 3, scoreId: 'oeeScoreQuality' },
+            review: { total: 5, scoreId: 'oeeScoreReview' }
+        };
+
+        function updateOEEChecklist() {
+            const checks = Array.from(document.querySelectorAll('.oee-check'));
+            const completed = checks.filter(c => c.checked).length;
+            const total = checks.length;
+            const percent = total ? Math.round((completed / total) * 100) : 0;
+
+            document.getElementById('oeeProgressFill').style.width = percent + '%';
+            document.getElementById('oeeProgressText').innerText =
+                `${completed} / ${total} completed (${percent}%)`;
+
+            Object.keys(oeeAreas).forEach(area => {
+                const done = checks.filter(c => c.dataset.area === area && c.checked).length;
+                document.getElementById(oeeAreas[area].scoreId).innerText =
+                    `${done} / ${oeeAreas[area].total}`;
+            });
+
+            localStorage.setItem(
+                'chenabOEEChecklist',
+                JSON.stringify(checks.map(c => c.checked))
+            );
+        }
+
+        function checkAllOEE() {
+            document.querySelectorAll('.oee-check').forEach(c => c.checked = true);
+            updateOEEChecklist();
+        }
+
+        function resetOEEChecklist() {
+            document.querySelectorAll('.oee-check').forEach(c => c.checked = false);
+            localStorage.removeItem('chenabOEEChecklist');
+            updateOEEChecklist();
+        }
+
+        function loadOEEChecklist() {
+            try {
+                const saved = JSON.parse(localStorage.getItem('chenabOEEChecklist') || '[]');
+                const checks = document.querySelectorAll('.oee-check');
+                checks.forEach((c, i) => {
+                    if (typeof saved[i] === 'boolean') c.checked = saved[i];
+                    c.addEventListener('change', updateOEEChecklist);
+                });
+            } catch (e) {
+                console.warn('OEE checklist state could not be loaded.');
+            }
+            updateOEEChecklist();
+        }
+
         // Live Clock (Pakistan Standard Time)
         function updateTime() {
             const now = new Date();
@@ -791,6 +1248,7 @@
         }
         setInterval(updateTime, 1000);
         updateTime();
+        loadOEEChecklist();
 
         // Dark/Light Theme Toggle Logic
         function toggleTheme() {
